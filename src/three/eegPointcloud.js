@@ -1,4 +1,4 @@
-import deviceProfile from './devices/device01'
+import deviceProfile from './devices/ultracortex01'
 class EEGPointcloud {
   constructor(subScene) {
     this.dotScale = 5;
