@@ -23,6 +23,7 @@ class PlaybackStream {
 
   onOpen(evt) {
     console.log('Playback Stream connected:', evt);
+    this.websocket.send({'hello': 'something'})
   }
 
   onClose(evt) {
