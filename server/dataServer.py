@@ -3,18 +3,33 @@
 import asyncio
 import websockets
 import json
+import csvReader
+import logging
+
+merge_data = csvReader.run()
+
 
 
 async def producer_handler(websocket, path):
     while True:
-        message = await producer()
+        message = producer()
+        logging.info(message)
         await websocket.send(message)
 
-async def producer():
-    greeting = {'hello': 'world'}
-    json_object = json.dumps(greeting)
+def producer():
+    global merge_data
+
+    try:
+        json_data = json.dumps(next(merge_data))
+        logging.error('looping through data')     
+    except StopIteration:
+        merge_data = 0
+        logging.error('reset data loop')
+        merge_data = csvReader.run()
+        json_data = json.dumps(next(merge_data))
+    return json_data
+
     
-    return json_object
 
 start_server = websockets.serve(producer_handler, 'localhost', 9999)
 
