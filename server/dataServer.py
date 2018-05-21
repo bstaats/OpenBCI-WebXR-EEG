@@ -6,6 +6,7 @@ import json
 import csvReader
 import logging
 import get_freq_int
+import time
 
 
 def process_openbci_data():
@@ -32,10 +33,11 @@ def producer():
 
     try:
         json_data = json.dumps(next(merge_data))
-        logging.error('looping through data')     
+        #logging.error('looping through data')    
+        time.sleep(0.1)
     except StopIteration:
         merge_data = 0
-        logging.error('reset data loop')
+        #logging.error('reset data loop')
         merge_data = csvReader.run()
         json_data = json.dumps(next(merge_data))
     return json_data
