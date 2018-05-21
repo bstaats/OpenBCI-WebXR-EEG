@@ -16,16 +16,16 @@ def process_openbci_data():
             logging.error(key)
             yield row.get(key, None)
 
-merge_data = process_openbci_data()
+#merge_data = process_openbci_data()
 # this is for the data from freqcenter and intensity data
-#merge_data = csvReader.run()
+merge_data = csvReader.run()
 
 
 
 async def producer_handler(websocket, path):
     while True:
         message = producer()
-        logging.info(message)
+        logging.error(message)
         await websocket.send(message)
 
 def producer():

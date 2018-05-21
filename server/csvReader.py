@@ -2,7 +2,7 @@ import csv
 
 
 freqFile = 'data/fftcenter.csv'
-intensityFile = 'data/intensitydata.csv'
+intensityFile = 'data/fftpower.csv'
 
 def read_playback_files(dataFile):
     data = []
@@ -30,9 +30,9 @@ def merge_fdata_and_idata(fdata, idata):
         i_dict = idata[i]
         for key in f_dict.keys():
             if key is not '':
-                new_dict[key] = {'freq': f_dict.get(key), 'int': i_dict.get(key)}
                 # in the old dataStreamer.js code, not sure why
                 new_dict['field1'] = {'freq': str(i), 'int': str(i)}
+                new_dict[key] = {'freq': f_dict.get(key), 'int': i_dict.get(key)}
         new_list.append(new_dict)
         i += 1
 
