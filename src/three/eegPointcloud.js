@@ -1,4 +1,5 @@
-import deviceProfile from './devices/ultracortex01'
+import deviceProfile, { minV, maxV } from './devices/ultracortex01';
+
 class EEGPointcloud {
   constructor(subScene) {
     this.dotScale = 5;
@@ -47,8 +48,6 @@ class EEGPointcloud {
   }
 
   updateData(data) {
-    let minV = 9
-    let maxV = 15
     let meanV = (minV+maxV)/2
     _.each(data, (value, key) => {
       const idx = deviceProfile.findIndex(i => i.label === key);

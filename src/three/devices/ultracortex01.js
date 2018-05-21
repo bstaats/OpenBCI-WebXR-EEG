@@ -102,4 +102,6 @@ const ultracortex01 = [
       },
 ];
 
+export const minV = 9;
+export const maxV = 15;
 export default ultracortex01;
