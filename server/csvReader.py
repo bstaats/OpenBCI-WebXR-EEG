@@ -32,7 +32,7 @@ def merge_fdata_and_idata(fdata, idata):
             if key is not '':
                 new_dict[key] = {'freq': f_dict.get(key), 'int': i_dict.get(key)}
                 # in the old dataStreamer.js code, not sure why
-                new_dict['field1'] = {'freq': i, 'int': i}
+                new_dict['field1'] = {'freq': str(i), 'int': str(i)}
         new_list.append(new_dict)
         i += 1
 
