@@ -64,7 +64,10 @@ def get_preprocessed_data(filename='./data/testfile_4.csv', wlen=128, overlap=64
 
     dicts = []
 
-    for w in np.arange(0, n, overlap):
-        dicts.append(process_data(data[w:w+wlen,:]))
+    for iw, w in enumerate(np.arange(0, n, overlap)):
+        d = process_data(data[w:w+wlen,:])
+        for b in d.keys():
+            d[b]['field1'] = {'freq': str(iw), 'int': str(iw)}
+        dicts.append(d)
 
     return dicts[:-3]
