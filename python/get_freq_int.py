@@ -39,6 +39,6 @@ def process_data(signal, sr=250):
     x, f = compute_fft(signal, sr)
     return get_max_per_band(x, f)
 
-# signal = np.load('./data/sample.npy')
+# signal = np.loadtxt('./data/sample.csv', delimiter=',')
 # output = process_data(signal)
 #
