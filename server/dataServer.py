@@ -5,8 +5,16 @@ import websockets
 import json
 import csvReader
 import logging
+import get_freq_int
 
-merge_data = csvReader.run()
+
+def process_openbci_data():
+    merge_data = get_freq_int.get_preprocessed_data()
+    for row in merge_data:
+        yield row
+
+merge_data = process_openbci_data()
+#merge_data = csvReader.run()
 
 
 
