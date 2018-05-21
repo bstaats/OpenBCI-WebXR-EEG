@@ -24,11 +24,11 @@ def get_max_per_band(s, f):
     out = {}
 
     for b, v in bands.items():
-        out[b] = {e: {} for e in range(n)}
+        out[b] = {e: {'freq': [], 'int': []} for e in ['Fz', 'Cz', 'P3', 'Pz', 'P4', 'O1', 'Oz', 'O2']}
         inds = (f>=v[0]) & (f<v[1])
-        for e in range(n):
-            out[b][e]['int'] = np.max(s[inds,e])
-            out[b][e]['freq'] = f[inds][np.argmax(s[inds,e])]
+        for ie, e in enumerate(out[b].keys()):
+            out[b][e]['int'] = np.max(s[inds,ie])
+            out[b][e]['freq'] = f[inds][np.argmax(s[inds,ie])]
     return out
 
 def process_data(signal, sr=250):
@@ -43,7 +43,7 @@ def get_preprocessed_data(filename='./data/testfile_4.csv', wlen=128, overlap=64
     '''
     Get a list of dictionaries, each holds freq and int per channel and freq band
     Inside get fft per window (wlen) with overlap (overlap)
-    :param filename: data filename, assumes space as delimiter
+    :param filename: data filename, assumes tab as delimiter
     :return: list of dicts
     '''
 
