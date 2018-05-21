@@ -9,6 +9,7 @@
     "build": "webpack --config webpack-production.config.js --progress --profile --colors",
     "file": "node ./server/fileServer.js",
     "start": "npm run file | npm run data",
+    "stream": "npm run webpack | python server/dataServer.py",
     "dev": "npm run webpack | npm run data"
   },
   "repository": {
