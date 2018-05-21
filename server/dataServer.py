@@ -14,6 +14,8 @@ def process_openbci_data():
         yield row
 
 merge_data = process_openbci_data()
+
+# this is for the data from freqcenter and intensity data
 #merge_data = csvReader.run()
 
 
