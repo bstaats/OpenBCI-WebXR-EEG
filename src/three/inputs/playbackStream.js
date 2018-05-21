@@ -31,7 +31,6 @@ class PlaybackStream {
 
   onMessage(msg) {
     this.callback(JSON.parse(msg.data));
-    console.log(msg);
   }
 
   onError(evt) {
