@@ -37,6 +37,7 @@ function broadcast(data) {
   wss.clients.forEach(function each(client) {
     if (client.readyState === WebSocket.OPEN) {
       try {
+        console.log(data);
         client.send(data);
       }
       catch(err) {

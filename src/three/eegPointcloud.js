@@ -48,11 +48,15 @@ class EEGPointcloud {
   }
 
   updateData(data) {
+    //console.log('updating data');
+    //console.log(data);
     let meanV = (minV+maxV)/2
     _.each(data, (value, key) => {
       const idx = deviceProfile.findIndex(i => i.label === key);
+      //console.log(key);
 
       let inVal= parseFloat(value.freq)
+      //console.log(inVal);
       let tColor = new THREE.Color(
         this.mapRange(inVal, minV, maxV, 0, 1),
         this.mapRange(Math.abs(inVal - meanV), (maxV-minV)/2, 0, 0, 1 ),

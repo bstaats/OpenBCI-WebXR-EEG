@@ -91,6 +91,8 @@ class Scene {
 
   listenForDataPlayback() { // Start ws instance, listen for data
     new PlaybackStream('ws://' + window.location.hostname + ':' + config.dataPlayback.ports.outgoing, (data) => {
+      //console.log('somewhere');
+      //console.log(data);
       this.eeg_pc.updateData(data);
     });
   }
