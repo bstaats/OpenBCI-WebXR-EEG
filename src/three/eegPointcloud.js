@@ -2,7 +2,7 @@ import deviceProfile, { minV, maxV } from './devices/ultracortex01';
 
 class EEGPointcloud {
   constructor(subScene) {
-    this.dotScale = 5;
+    this.dotScale = 25;
     this.subScene = subScene
     const textureLoader = new THREE.TextureLoader();
     const geometry = new THREE.BufferGeometry();
@@ -38,7 +38,7 @@ class EEGPointcloud {
       depthTest: false,
       uniforms: {
         color:   { value: new THREE.Color(0xFFFFFF) },
-        texture: { value: textureLoader.load('textures/sprites/disc.png') }
+        texture: { value: textureLoader.load('textures/sprites/spark.png') }
       },
       vertexShader: require('./glsl/vertex.glsl'),
       fragmentShader: require('./glsl/fragment.glsl')
@@ -62,7 +62,8 @@ class EEGPointcloud {
       tColor.toArray(this.points.geometry.attributes.customColor.array, idx*3)
 
       this.points.geometry.attributes.customColor.needsUpdate = true
-      this.points.geometry.attributes.size.array[idx] = ((this.mapRange(parseFloat(value.int), 10, 70, 0.1, this.dotScale)) * (this.subScene.scale.x/10)) + 0.01;
+      this.points.geometry.attributes.size.array[idx] = (
+        (this.mapRange(parseFloat(value.int), 10, 70, 0.1, this.dotScale)) * (this.subScene.scale.x/10)) + 0.01;
       this.points.geometry.attributes.size.needsUpdate = true;
       this.points.geometry.needsUpdate = true;
     });

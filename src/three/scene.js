@@ -219,9 +219,10 @@ class Scene {
 
     this.loadObj('models/brains/spineless.obj', {
       color: 0x6EC5FB,
-      opacity: 0.015,
+      opacity: 0.006,
       wireframe: true,
       transparent: true,
+      side: THREE.BackSide,
       depthTest: false,
     }, (obj) => {
       obj.scale.set(0.022, 0.022, 0.022);
